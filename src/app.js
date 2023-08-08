@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import * as THREE from 'three'
 import { addPass, useCamera, useGui, useRenderSize, useScene, useTick } from './render/init.js'
 // import postprocessing passes
@@ -27,10 +28,12 @@ const startApp = () => {
 
   // meshes
   const geometry = new THREE.IcosahedronGeometry(1, 5)
-  const material = new THREE.ShaderMaterial({
+  const material = new THREE.RawShaderMaterial({
     vertexShader,
     fragmentShader,
   })
+  material.uniforms.uTime = { value: 0 }
+  console.log(material)
 
   const ico = new THREE.Mesh(geometry, material)
   scene.add(ico)
