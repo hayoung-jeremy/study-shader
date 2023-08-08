@@ -27,10 +27,11 @@ const startApp = () => {
   scene.add(dirLight, ambientLight)
 
   // meshes
-  const geometry = new THREE.IcosahedronGeometry(1, 5)
+  const geometry = new THREE.PlaneGeometry(2, 2, 6, 6)
   const material = new THREE.ShaderMaterial({
     vertexShader,
     fragmentShader,
+    // wireframe: true,
   })
   material.uniforms.uTime = { value: 0 }
   console.log(material)
