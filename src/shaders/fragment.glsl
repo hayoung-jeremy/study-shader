@@ -1,7 +1,13 @@
+uniform float uRadius;
+
 varying vec3 vPosition;
 varying vec3 vNormal;
-flat varying vec2 vUv;
+varying vec2 vUv;
 
 void main() {
-	gl_FragColor = vec4( mix(vec3(0), vec3(1), vUv.x), 1.0 );
+	vec2 uv = vUv;
+	uv -= vec2(0.5);
+	uv *= 2.0;
+	
+	gl_FragColor = vec4( vec3(step(uRadius, length(uv))), 1.0 );
 }

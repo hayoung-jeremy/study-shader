@@ -27,13 +27,14 @@ const startApp = () => {
   scene.add(dirLight, ambientLight)
 
   // meshes
-  const geometry = new THREE.PlaneGeometry(2, 2, 6, 6)
+  const geometry = new THREE.PlaneGeometry(2, 2, 2, 2)
   const material = new THREE.ShaderMaterial({
     vertexShader,
     fragmentShader,
     // wireframe: true,
   })
   material.uniforms.uTime = { value: 0 }
+  material.uniforms.uRadius = { value: 0.5 }
   console.log(material)
 
   const ico = new THREE.Mesh(geometry, material)
@@ -43,6 +44,8 @@ const startApp = () => {
   const cameraFolder = gui.addFolder('Camera')
   cameraFolder.add(camera.position, 'z', 0, 10)
   cameraFolder.open()
+
+  gui.add(material.uniforms.uRadius, 'value').min(0).max(1)
 
   // postprocessing
   const renderTargetParameters = {
