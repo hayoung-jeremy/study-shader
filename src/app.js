@@ -10,6 +10,8 @@ import { CopyShader } from 'three/examples/jsm/shaders/CopyShader.js'
 import vertexShader from './shaders/vertex.glsl'
 import fragmentShader from './shaders/fragment.glsl'
 
+import colorfulTexture from './images/image.jpg'
+
 const startApp = () => {
   const scene = useScene()
   const camera = useCamera()
@@ -35,6 +37,7 @@ const startApp = () => {
   })
   material.uniforms.uTime = { value: 0 }
   material.uniforms.uRadius = { value: 0.5 }
+  material.uniforms.uTexture = { value: new THREE.TextureLoader().load(colorfulTexture) }
   console.log(material)
 
   const ico = new THREE.Mesh(geometry, material)
