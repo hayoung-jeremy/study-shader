@@ -27,7 +27,7 @@ const startApp = () => {
   scene.add(dirLight, ambientLight)
 
   // meshes
-  const geometry = new THREE.PlaneGeometry(2, 2, 2, 2)
+  const geometry = new THREE.PlaneGeometry(2, 2)
   const material = new THREE.ShaderMaterial({
     vertexShader,
     fragmentShader,
